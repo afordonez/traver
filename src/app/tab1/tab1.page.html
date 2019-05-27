@@ -1,0 +1,57 @@
+<ion-header no-border>
+  <ion-toolbar class="toolbar">
+    <ion-title>
+      Traver
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div> 
+    <!--<ion-virtual-scroll [items]="dataListPanel">-->
+  <ion-list class="list">
+      <div class="div-list">
+        <ion-item-sliding side="end" *ngFor="let item of dataListPanel">
+          <!--<ion-item class="item-lista">-->
+              <ion-item (click)="escribe(item)" class="item-lista">  
+          <ion-card class="card">
+            <ion-card-header class="card-header">
+
+                        <ion-avatar style="display:inline-block">
+                          <img src="../../assets/avatar/avatar.jpg">
+                        </ion-avatar>
+                        <ion-label class="avatar-label">Conductor: Isabell de las virtudes y animal de los santos por obra <del></del></ion-label>
+
+            </ion-card-header>
+            <ion-card-content>
+                    <p *ngIf="item.coste" class="p-item"><ion-icon name="home" class="origen"></ion-icon> {{ item.origen }}</p>
+                    <p *ngIf="!item.coste" class="p-item"><ion-icon name="home" class="origen"></ion-icon> {{ item.origen }}</p>
+                    <p *ngIf="item.coste" class="p-item"><ion-icon name="car" class="destino"></ion-icon> {{ item.destino }}</p>
+                    <p *ngIf="!item.coste" class="p-item"><ion-icon name="car" class="destino"></ion-icon> {{ item.destino }}</p>
+                <div>
+                  <p *ngIf="item.coste" class="p-puntos"><ion-icon name="logo-usd" class="puntos"></ion-icon>({{ item.coste }})</p>
+                  <p *ngIf="!item.coste" class="p-puntos"><ion-icon name="logo-usd" class="puntos"></ion-icon>({{ item.ganancia}})</p>  
+                </div>
+            </ion-card-content>
+          </ion-card>
+          </ion-item>
+          <!--</ion-item>--> 
+          <ion-item-options>
+              <button primary ion-button (click)="presentAlertConfirm(item.id)" color="danger" style="z-index: 5px; position:static;">Eliminar</button>
+          </ion-item-options>
+      </ion-item-sliding>
+    </div> 
+  </ion-list>
+         
+      
+    <!--</ion-virtual-scroll>-->
+    <ion-infinite-scroll #is threshold="1px" (ionInfinite)="cargaMasViajes($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Cargando Viajes..."
+        class="infinite-scroll">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  
+  </div>
+</ion-content>

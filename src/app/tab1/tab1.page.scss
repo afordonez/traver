@@ -1,0 +1,84 @@
+.welcome-card ion-img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+.toolbar{
+  --background:#EFEFEF;
+  font-family: Roboto;
+}
+.list{
+  background-color:#EFEFEF;
+}
+.div-list{
+  margin: 0%;
+  background-color:#EFEFEF;
+}
+.item-lista{
+  
+  border: none;
+ 
+  --border-radius: 15px;
+  margin-bottom:5%;
+  
+}
+.infinite-scroll{
+  background-color:#EFEFEF;
+}
+.card{
+  
+  background-color: white;
+  box-shadow: none;
+}
+ion-card{
+  margin:0px !important;
+}
+.card-header{
+  padding:3% 5px 5px 5px !important;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.item-avatar{
+  --border-style: transparent;
+  --padding-start: 0px;
+}
+.avatar-label{
+  display:inline-block;
+  position: relative;
+  top: -22px;
+  left: 10px;
+}
+.p-item{
+  margin-top: 0%;
+  font-family: Roboto;
+  font-size: 1.3em;
+  color:black;
+}
+.p-puntos{
+  margin-top: 3%;
+  font-family: Roboto;
+  font-size:1.2em;
+  color:black;
+}
+.origen{
+  color:#068EFF;
+  font-size: 20px;
+  
+}
+.destino{
+  color:#FF3B06;
+  font-size: 20px;
+ 
+}
+.puntos{
+  color:#06FF5D;
+  font-size: 20px;
+ 
+}
+
+
+
+@font-face{
+  font-family: Roboto;
+  src: url('../../assets/fonts/Roboto-Thin.ttf');
+}

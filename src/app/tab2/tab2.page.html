@@ -1,0 +1,43 @@
+<ion-header no-border>
+  <ion-toolbar class="toolbar">
+    <ion-title>
+      Nuevo Viaje
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+    <form [formGroup]="viaje"(ngSubmit)="nuevoViaje()">
+      <ion-item>
+        <ion-label>Conductor</ion-label>
+        <ion-input required type="text" formControlName="conductor" minlenght="9"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Fecha</ion-label>
+          <ion-datetime 
+          display-format="DD/MM/YYYY" 
+          picker-format="DDDD MMMM YYYY"
+          month-names="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre" 
+          formControlName="fecha"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Origen</ion-label>
+        <ion-input type="text" formControlName="origen"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Destino</ion-label>
+          <ion-input type="text" formControlName="destino"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Ganancia</ion-label>
+          <ion-input type="text" formControlName="ganancia"></ion-input>
+      </ion-item>
+      <ion-item>
+            <ion-label>Realizado</ion-label>
+            <ion-input type="text" formControlName="realizado"></ion-input>
+      </ion-item>
+        
+
+        <ion-button shape="round" [disabled]="viaje.invalid">Guardar</ion-button>
+    </form>
+</ion-content>

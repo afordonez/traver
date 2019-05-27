@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modal</ion-title>
+  </ion-toolbar>
+</ion-header>
+<p>¿Estás seguro de querer eliminar el viaje?</p>
+<p>{{conductor}}</p>
+<p>{{origen}}</p>
+<p>{{destino}}</p>
+<p>{{Unix_timestamp(fecha.seconds)}}</p>
+<p>{{ganancia}}</p>
+<ion-content>
+  <ion-button color="primary" click="">Si</ion-button>
+  <ion-button color="secondary" (click)="closeModal()">No</ion-button>
+
+</ion-content>
