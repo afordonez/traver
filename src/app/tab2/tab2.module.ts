@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
+import { Ng2CompleterModule } from "ng2-completer";
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { Tab2Page } from './tab2.page';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng2CompleterModule,
     RouterModule.forChild([{ path: '', component: Tab2Page }])
   ],
   declarations: [Tab2Page]

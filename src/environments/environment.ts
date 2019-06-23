@@ -12,6 +12,14 @@ export const environment = {
     storageBucket: 'traver-f1bbf.appspot.com',
     messagingSenderId: '738453651411',
     viajeColeccion: 'viaje'
+  },
+  hereEndPoints:{
+    autocomplete:'http://autocomplete.geocoder.api.here.com/6.2/suggest.json?app_id=uxEmAglbkQRXQFGglvhp&app_code=GnYqSMaK2w87b5S-4a-PXQ&country=ESP&resultType=areas&query=',
+    geocode:'http://geocoder.api.here.com/6.2/geocode.json?jsonattributes=1&gen=9&app_id=uxEmAglbkQRXQFGglvhp&app_code=GnYqSMaK2w87b5S-4a-PXQ&locationid=',
+    route:''
+  },
+  hereRouteEndpoint(latitudeOr: string, longitudeOr: string,latitudeDes:string, longitudeDes:string){
+    route:''
   }
 
 };

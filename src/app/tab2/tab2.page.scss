@@ -10,3 +10,27 @@ ion-button{
     color:white;
     --vertical-align: center;
 }
+.completer-dropdown-holder{
+    position: absolute;
+    z-index: 10px;
+    overflow: visible;
+}
+.completer-dropdown{
+    position: absolute;
+    z-index: 10px;
+}
+.completer-list-item-holder{
+    position: absolute;
+    z-index: 10px;
+}
+.completer-list-item{
+    position: absolute;
+    z-index: 10px;
+}
+
+.item-native{
+    overflow: visible !important;
+}
+ion-item div{
+    overflow: visible !important;
+}

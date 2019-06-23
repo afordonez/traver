@@ -15,7 +15,6 @@ export class ModalPage implements OnInit {
   origen;
   destino;
   fecha;
-  mifecha: Date;
   ganancia;
   constructor(navParams: NavParams, private modalCtrl: ModalController) {
    }

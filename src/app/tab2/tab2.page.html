@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content class="content">
-    <form [formGroup]="viaje"(ngSubmit)="nuevoViaje()">
+    <form [formGroup]="viaje"(ngSubmit)="gestionaViaje()">
       <ion-item>
         <ion-label>Conductor</ion-label>
         <ion-input required type="text" formControlName="conductor" minlenght="9"></ion-input>
@@ -20,13 +20,16 @@
           month-names="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre" 
           formControlName="fecha"></ion-datetime>
       </ion-item>
-      <ion-item>
+      <ion-item class="completer">
         <ion-label>Origen</ion-label>
-        <ion-input type="text" formControlName="origen"></ion-input>
+        <!--<ion-input type="text" formControlName="origen"></ion-input>-->
       </ion-item>
-      <ion-item>
+      <ng2-completer [overrideSuggested]=true  (keyup)="presentUbi(searchStrOr)"  [(ngModel)]="searchStrOr" [datasource]="dataService" [minSearchLength]="2" formControlName="origen"></ng2-completer>
+
+      <ion-item class="completer">
           <ion-label>Destino</ion-label>
-          <ion-input type="text" formControlName="destino"></ion-input>
+         <!--<ion-input type="text" formControlName="destino"></ion-input>--> 
+          <ng2-completer [overrideSuggested]=true (keyup)="presentUbi(searchStrDes)"  [(ngModel)]="searchStrDes" [datasource]="dataService" [minSearchLength]="2" formControlName="destino"></ng2-completer>
       </ion-item>
       <ion-item>
           <ion-label>Ganancia</ion-label>
@@ -38,6 +41,6 @@
       </ion-item>
         
 
-        <ion-button shape="round" [disabled]="viaje.invalid">Guardar</ion-button>
+        <ion-button type="submit" shape="round" [disabled]="viaje.invalid">Guardar</ion-button>
     </form>
 </ion-content>

@@ -11,9 +11,9 @@
     <!--<ion-virtual-scroll [items]="dataListPanel">-->
   <ion-list class="list">
       <div class="div-list">
-        <ion-item-sliding side="end" *ngFor="let item of dataListPanel">
+
           <!--<ion-item class="item-lista">-->
-              <ion-item (click)="escribe(item)" class="item-lista">  
+              <ion-item *ngFor="let item of dataListPanel" (click)="presentAlertConfirm(item.id)" class="item-lista">  
           <ion-card class="card">
             <ion-card-header class="card-header">
 
@@ -36,10 +36,6 @@
           </ion-card>
           </ion-item>
           <!--</ion-item>--> 
-          <ion-item-options>
-              <button primary ion-button (click)="presentAlertConfirm(item.id)" color="danger" style="z-index: 5px; position:static;">Eliminar</button>
-          </ion-item-options>
-      </ion-item-sliding>
     </div> 
   </ion-list>
          

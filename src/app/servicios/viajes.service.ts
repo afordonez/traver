@@ -36,10 +36,12 @@ export class ViajesService {
 
 
   /*Lee un viaje concreto de firebase*/
-  leeViaje(id) {
-    return this.myCollection.doc(id).get;
+  leeViaje(id): Observable<any> {
+    return this.myCollection.doc(id).get();
   }
-  actualizaViaje() {
+  //Actualiza un viaje
+  actualizaViaje(id: string, viaje) {
+    return this.myCollection.doc(id).update(viaje);
 
   }
   leeViajeSegunCriterio() {

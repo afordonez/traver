@@ -1,5 +1,7 @@
 {
   "name": "traver",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,11 +1,12 @@
 import { Component, ViewChild, NgModule } from '@angular/core';
-import { IonInfiniteScroll, IonVirtualScroll} from '@ionic/angular';
+import { IonInfiniteScroll, IonVirtualScroll, NavController} from '@ionic/angular';
 import {Viaje} from '../model/viaje';
 import { LoadingController} from '@ionic/angular';
 import {ViajesService} from '../servicios/viajes.service';
 import { AlertController } from '@ionic/angular';
 import {ModalPage } from '../modal/modal/modal.page';
 import {ModalController} from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -29,7 +30,9 @@ export class Tab1Page {
   constructor(private viajes: ViajesService,
     public loadingController: LoadingController,
     public alertController: AlertController,
-    public modalController: ModalController) {
+    public modalController: ModalController,
+    private router: Router,
+    private navController: NavController) {
 
    /* this.dataList = [];
     for (this.i = 0; this.i < 50; this.i++) {
@@ -47,7 +50,7 @@ export class Tab1Page {
       .then((querySnapshot) => {
         this.dataList = [];
         querySnapshot.forEach((doc) => {
-          // console.log(doc.id);
+          console.log(doc.id);
           //console.log(doc.data());
           const temporal: Viaje = {id: doc.id, ...doc.data()};
           
@@ -68,11 +71,12 @@ export class Tab1Page {
 
       }
 
- cargaMasViajes(event) {
+ 
+      cargaMasViajes(event) {
 
  
-    //console.log("carga");
-    //console.log(this.ultimoViaje.data());
+    console.log("carga");
+    console.log(this.ultimoViaje.data());
     this.viajes.leeViajesNoRealizadosCada10DesdeElUltimoLeido(this.ultimoViaje)
     .then((querySnapshot)=>{
       //console.log(querySnapshot);
@@ -89,6 +93,7 @@ export class Tab1Page {
 
       //let contador:number = 15;
       //console.log(this.dataList[this.i])  
+      console.log("Aquí estoy entrando");
       event.target.complete();
     });
     
@@ -113,19 +118,22 @@ export class Tab1Page {
   
   async presentAlertConfirm(id) {
     const alert = await this.alertController.create({
-      header: 'Estás a punto de eliminar el viaje!',
-      message: '<p style="color:black;">¿Quieres eliminarlo?</p>',
+      header: 'Editar, Eliminar',
+      message: '<p style="color:black;">Selecciona editar, o eliminar.</p>',
       buttons: [
         {
-          text: 'No',
+
+          text: 'Editar',
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            console.log('No lo elimino');
+            //console.log('No lo elimino');
+            this.router.navigate(['/tab2',id]);
+            //this.navController.navigateForward(['/tab2', id]);
             
           }
         }, {
-          text: 'Si',
+          text: 'Eliminar',
           handler: () => {
             //console.log('Confirm Okay');
             this.eliminaViaje(id);

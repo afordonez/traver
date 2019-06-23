@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modalResumen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text>
+    <p *ngIf="viaje &&viaje!=null">Conductor: {{viaje.conductor}}</p>  
+  </ion-text>
+  <ion-text>
+    <p *ngIf="viaje &&viaje!=null">Origen: {{viaje.origen}}</p>  
+  </ion-text>
+  <ion-text>
+    <p *ngIf="viaje &&viaje!=null">Destino: {{viaje.destino}}</p>  
+  </ion-text>
+  <ion-text>
+    <p *ngIf="viaje &&viaje!=null">Fecha: {{viaje.fecha}}</p>  
+  </ion-text>
+  <ion-text>
+    <p *ngIf="viaje &&viaje!=null">Ganancia: {{viaje.ganancia}}</p>  
+  </ion-text>
+  <ion-text>
+    <p *ngIf="viaje && viaje.realizado == false">Aún no has hecho este viaje</p>
+    <p *ngIf="viaje && viaje.realizado == true">Ya has hecho este viaje</p>
+  </ion-text>
+  <ion-text>
+    <p *ngIf="viaje &&viaje!=null">Distancia: {{viaje.distance}}</p>  
+  </ion-text>
+</ion-content>
