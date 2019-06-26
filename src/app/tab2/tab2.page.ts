@@ -154,6 +154,8 @@ export class Tab2Page implements OnInit{
                 else{
                   console.log("Objeto nulo");
                 }
+               }else{
+                 this.loadingController.dismiss();
                }
              });
            })

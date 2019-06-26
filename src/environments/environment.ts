@@ -14,8 +14,8 @@ export const environment = {
     viajeColeccion: 'viaje'
   },
   hereEndPoints:{
-    autocomplete:'http://autocomplete.geocoder.api.here.com/6.2/suggest.json?app_id=uxEmAglbkQRXQFGglvhp&app_code=GnYqSMaK2w87b5S-4a-PXQ&country=ESP&resultType=areas&query=',
-    geocode:'http://geocoder.api.here.com/6.2/geocode.json?jsonattributes=1&gen=9&app_id=uxEmAglbkQRXQFGglvhp&app_code=GnYqSMaK2w87b5S-4a-PXQ&locationid=',
+    autocomplete:'https://autocomplete.geocoder.api.here.com/6.2/suggest.json?app_id=uxEmAglbkQRXQFGglvhp&app_code=GnYqSMaK2w87b5S-4a-PXQ&country=ESP&resultType=areas&query=',
+    geocode:'https://geocoder.api.here.com/6.2/geocode.json?jsonattributes=1&gen=9&app_id=uxEmAglbkQRXQFGglvhp&app_code=GnYqSMaK2w87b5S-4a-PXQ&locationid=',
     route:''
   },
   hereRouteEndpoint(latitudeOr: string, longitudeOr: string,latitudeDes:string, longitudeDes:string){

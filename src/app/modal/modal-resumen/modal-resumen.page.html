@@ -1,3 +1,13 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+  
 <ion-header>
   <ion-toolbar>
     <ion-title>modalResumen</ion-title>
@@ -6,25 +16,26 @@
 
 <ion-content>
   <ion-text>
-    <p *ngIf="viaje &&viaje!=null">Conductor: {{viaje.conductor}}</p>  
+    <p *ngIf="viaje &&viaje!=null"><ion-icon name="person"></ion-icon> {{viaje.conductor}}</p>  
   </ion-text>
   <ion-text>
-    <p *ngIf="viaje &&viaje!=null">Origen: {{viaje.origen}}</p>  
+    <p *ngIf="viaje &&viaje!=null" class="orDes">{{viaje.origen}}<ion-icon name="swap"></ion-icon>{{viaje.destino}}</p>  
   </ion-text>
   <ion-text>
-    <p *ngIf="viaje &&viaje!=null">Destino: {{viaje.destino}}</p>  
+    <p *ngIf="viaje &&viaje!=null">Destino: </p>  
   </ion-text>
   <ion-text>
-    <p *ngIf="viaje &&viaje!=null">Fecha: {{viaje.fecha}}</p>  
+    <p *ngIf="viaje &&viaje!=null"><ion-icon name="calendar"></ion-icon> {{fechaString}}</p>  
   </ion-text>
   <ion-text>
-    <p *ngIf="viaje &&viaje!=null">Ganancia: {{viaje.ganancia}}</p>  
+    <p *ngIf="viaje &&viaje!=null"><ion-icon name="logo-euro"></ion-icon> {{viaje.ganancia}}</p>  
   </ion-text>
   <ion-text>
     <p *ngIf="viaje && viaje.realizado == false">Aún no has hecho este viaje</p>
     <p *ngIf="viaje && viaje.realizado == true">Ya has hecho este viaje</p>
   </ion-text>
   <ion-text>
-    <p *ngIf="viaje &&viaje!=null">Distancia: {{viaje.distance}}</p>  
+    <p *ngIf="viaje &&viaje!=null"><ion-icon name="resize"></ion-icon> {{viaje.distance}}</p>  
   </ion-text>
+  <div id="mapid"></div>
 </ion-content>

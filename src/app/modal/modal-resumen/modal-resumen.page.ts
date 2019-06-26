@@ -6,6 +6,10 @@ import {Viaje} from '../../model/viaje';
 import {Location} from '../../model/ubicaciones'
 import { strict } from 'assert';
 import { stringify } from '@angular/compiler/src/util';
+import { Map, latLng, tileLayer, Layer, marker, Routing } from 'leaflet';
+import'../../../../node_modules/leaflet/dist/leaflet.js';
+import '../../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js';
+declare let L;
 
 @Component({
   selector: 'app-modal-resumen',
@@ -16,8 +20,10 @@ export class ModalResumenPage implements OnInit {
   mimodal: ModalResumenPage;
   protected viaje: Viaje;
   protected viaje2: Viaje;
+  protected fechaString: string;
   
   id;
+  map: Map;
   constructor(private modalCrl: ModalController,
     private viajeS: ViajesService,
     private hereS: HereService,
@@ -55,6 +61,7 @@ export class ModalResumenPage implements OnInit {
           console.log("Latitude "+latitudeDes)
           console.log("Longitude "+longitudeDes)
   
+          this.leafletMap(latitudeOr,longitudeOr,latitudeDes,longitudeDes);
           this.hereS.route(latitudeOr,longitudeOr,latitudeDes,longitudeDes)
           .subscribe(json=>{
             //console.log("Distancia: "+json.response.route["0"].sumary.distance);
@@ -79,6 +86,7 @@ export class ModalResumenPage implements OnInit {
               distance: distance
   
             }
+            this.fechaString = this.Unix_timestamp(this.viaje.fecha);
             this.viajeS.actualizaViaje(viaje.id,viaje)
             .then(()=>{
               console.log("viaje actualizado")
@@ -102,8 +110,36 @@ export class ModalResumenPage implements OnInit {
       })
     })
    
+  
+    
 
 
+
+  }
+
+
+
+
+  leafletMap(latitudeOr: string, longitudeOr: string, latitudeDes: string, longitudeDes: string) {
+   
+    const map = L.map('mapid').setView([latitudeOr, longitudeOr], 13);
+
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+
+		L.Routing.control({
+  waypoints: [
+    L.latLng(latitudeDes, longitudeDes),
+    L.latLng(latitudeOr, longitudeOr)
+  ]
+  }).addTo(map);
+
+  }
+
+  /** Remove map when we have multiple map object */
+  ionViewWillLeave() {
+    this.map.remove();
   }
 
   async recuperaViaje(id){
@@ -116,4 +152,19 @@ export class ModalResumenPage implements OnInit {
     });
     return await myloading.present()
     ; }
+
+    Unix_timestamp(t)
+    {
+    var dt = new Date(t*1000);
+    var yr = dt.getFullYear();
+    var mt = dt.getMonth()+1;
+    var dy = dt.getDate();
+    var hr = dt.getHours();
+    var m = "0" + dt.getMinutes();
+    var s = "0" + dt.getSeconds();
+    return dy+'/'+mt+'/'+yr+':'+ hr+ ':' + m.substr(-2) + ':' + s.substr(-2);  
+    }
+    
+
+
 }
